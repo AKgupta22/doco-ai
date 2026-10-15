@@ -1,4 +1,11 @@
 import express from "express";
+import dotenv from "dotenv";
+import { connectToDatabase } from "./config/db.ts";
+
+dotenv.config();
+
+// Connect to the database
+connectToDatabase();
 
 // import v1 routes
 
