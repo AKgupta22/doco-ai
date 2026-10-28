@@ -5,11 +5,12 @@ import { connectToDatabase } from "./config/db.ts";
 dotenv.config();
 
 // Connect to the database
-connectToDatabase();
+// connectToDatabase();
 
 // import v1 routes
 
 import userRouter from "./routes/v1/users.routes.ts";
+import { executeWeatherAgent } from "./agents/weather/weather.agent.ts";
 
 // ------ end of v1 routes ------
 
@@ -20,6 +21,10 @@ const app = express();
 app.use("/api/v1", userRouter);
 
 // ------ end of v1 routes use ------
+
+// LLM Calls
+
+executeWeatherAgent("Who are you?")
 
 
 app.get("/", (req, res) => {
